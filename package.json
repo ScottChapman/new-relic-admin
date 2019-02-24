@@ -1,0 +1,30 @@
+{
+  "name": "new-relic-admin",
+  "version": "1.0.0",
+  "description": "admin scripts for new relic artifacts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScottChapman/new-relic-admin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ScottChapman/new-relic-admin/issues"
+  },
+  "homepage": "https://github.com/ScottChapman/new-relic-admin#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "config": "^3.0.1",
+    "csv-parse": "^4.3.3",
+    "csv-writer": "^1.2.0",
+    "log4js": "^4.0.2",
+    "newrelic-api-client": "github:scottchapman/newrelic-api-client-js",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "yargs": "^13.2.1"
+  }
+}
