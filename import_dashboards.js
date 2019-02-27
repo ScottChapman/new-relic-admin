@@ -1,9 +1,7 @@
 var fs = require('fs')
 const _ = require('lodash')
 const config = require('config')
-const configs = config.get("configs");
 const Dashboards = require('./lib/dashboards.js')
-const {map} = require('./lib/utils.js')
 
 const argv = require('yargs')
     .options({
@@ -20,13 +18,13 @@ const argv = require('yargs')
             alias: "target",
             demandOption: true,
             describe: "envrionment to import to",
-            choices: config.configs,
+            choices: _.keys(config),
             type: "string"
         }
     })
     .argv
 
-const dashboards = new Dashboards(argv.target);
+const dashboards = new Dashboards(config.get(argv.target));
 dashboards.createDashboards(argv.source).then(() => {
     console.log("Done!")
 }).catch(err => {

@@ -26,7 +26,7 @@ const argv = require('yargs')
     })
     .argv
 
-var dashboards = new Dashboards(argv.src)
+var dashboards = new Dashboards(config.get(argv.src))
 dashboards.getDashboards().then(result => {
     fs.writeSync(argv.out,(JSON.stringify({
         accountId: dashboards.getAccountId(),

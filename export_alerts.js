@@ -1,7 +1,6 @@
 const Alerts = require('./lib/alerts.js')
 const config = require('config')
 const _ = require('lodash')
-const configs = config.get("configs");
 const fs = require('fs')
 const logger = require('./lib/logger').getLogger();
 
@@ -11,7 +10,7 @@ const argv = require('yargs')
             alias: "source",
             demandOption: true,
             describe: "envrionment to export",
-            choices: config.configs,
+            choices: _.keys(config),
             type: "string"
         },
         'out': {
@@ -26,7 +25,7 @@ const argv = require('yargs')
     })
     .argv
 
-var alerts = new Alerts(argv.src)
+var alerts = new Alerts(config.get(argv.src))
 alerts.getAlerts().then(result => {
     fs.writeSync(argv.out,(JSON.stringify(result,null,2)))
 }).catch(err => {
