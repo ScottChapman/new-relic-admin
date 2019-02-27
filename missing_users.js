@@ -4,7 +4,7 @@ const createCsvStringify = require('csv-writer').createObjectCsvStringifier;
 const csvParser = require('csv-parse/lib/sync')
 const fs = require('fs')
 const _ = require('lodash')
-const logger = require('./lib/logger.js')
+const logger = require('./lib/logger.js').getLogger();
 
 const argv = require('yargs')
     .options({
@@ -27,7 +27,7 @@ const argv = require('yargs')
             alias: "target",
             demandOption: true,
             describe: "envrionment to import to",
-            choices: config.configs,
+            choices: _.keys(config),
             type: "string"
         }
     })
@@ -63,7 +63,7 @@ const csvStringify = createCsvStringify({
     ]
 });
 
-var users = new Users(argv.target);
+var users = new Users(config.get(argv.target));
 users.list().then(async (list) => {
     list = _.keyBy(list,"email");
     var result = [];

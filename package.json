@@ -22,7 +22,7 @@
     "csv-parse": "^4.3.3",
     "csv-writer": "^1.2.0",
     "log4js": "^4.0.2",
-    "newrelic-api-client": "github:scottchapman/newrelic-api-client-js",
+    "newrelic-api-client": "github:scottchapman/newrelic-api-client-js#Promises",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "yargs": "^13.2.1"
